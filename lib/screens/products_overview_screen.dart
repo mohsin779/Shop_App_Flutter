@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
-import '../models/product.dart';
+import '../provider/product.dart';
 import '../widgets/products_grid.dart';
 
 class ProductsOverViewScreen extends StatelessWidget {
