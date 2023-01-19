@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../provider/cart.dart' show Cart;
 import "../widgets/cart_item.dart";
+import '../provider/orders.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
@@ -28,7 +29,7 @@ class CartScreen extends StatelessWidget {
                 ),
                 Chip(
                   label: Text(
-                    '\$${cart.totalAmount}',
+                    '\$${cart.totalAmount.toStringAsFixed(2)}',
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -46,7 +47,13 @@ class CartScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Provider.of<Orders>(context, listen: false).addOrder(
+                      cart.items.values.toList(),
+                      cart.totalAmount,
+                    );
+                    cart.clear();
+                  },
                 ),
               ],
             ),
